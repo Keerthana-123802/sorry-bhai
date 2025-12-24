@@ -1,54 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>I Am Really Sorry</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A heartfelt apology page to my brother." />
+  <title>I'm Really Sorry</title>
   <style>
-    body {
+    :root{
+      --bg1: #ffd6e8;
+      --bg2: #fff1f7;
+      --accent: #ff4d88;
+      --text: #444;
+      --shadow: rgba(0,0,0,0.12);
+      --radius: 15px;
+    }
+
+    html,body {
+      height: 100%;
       margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: var(--text);
+    }
+
+    .page {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ffd6e8, #fff1f7);
-      font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+      justify-content: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    .card {
+      max-width: 920px;
+      width: 100%;
+      background: rgba(255,255,255,0.7);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 10px 30px var(--shadow);
       text-align: center;
-      padding: 20px;
+      backdrop-filter: blur(4px);
     }
-    h1 {
-      font-size: 2.5rem;
-      color: #ff4d88;
-      margin-bottom: 15px;
+
+    header h1 {
+      margin: 0 0 10px 0;
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      color: var(--accent);
+      line-height: 1.1;
+      letter-spacing: 0.6px;
+      text-transform: none;
     }
-    p {
-      font-size: 1.2rem;
-      color: #444;
-      margin-bottom: 25px;
+
+    header p.lead {
+      margin: 0 0 20px 0;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: #333;
     }
+
     .images {
       display: flex;
-      gap: 15px;
+      gap: 16px;
       flex-wrap: wrap;
       justify-content: center;
+      margin-top: 10px;
     }
+
     .images img {
       width: 150px;
       height: 150px;
+      max-width: calc(33% - 16px);
       object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 15px var(--shadow);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      flex: 0 1 150px;
+    }
+
+    .images img:focus,
+    .images img:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+      outline: none;
+    }
+
+    @media (max-width:560px){
+      .images img { width: 120px; height: 120px; flex: 0 1 120px; }
+      .card { padding: 18px; }
     }
   </style>
 </head>
 <body>
-  <h1>I AM REALLY SORRY MERE SABSE PYARE BHAI</h1>
-  <p>Please forgive me 🥺🤗</p>
-  <div class="images">
-    <img src="images.jpeg" alt="brother and sister" />
-    <img src="images1.jpeg" alt="cute siblings" />
-    <img src="images2.jpeg" alt="brother sister cartoon" />
-  </div>
+  <main class="page" role="main" aria-labelledby="apology-heading">
+    <section class="card" aria-describedby="apology-desc">
+      <header>
+        <h1 id="apology-heading">I'm really sorry, mere sabse pyare bhai</h1>
+        <p class="lead" id="apology-desc">Please forgive me 🥺🤗</p>
+      </header>
+
+      <div class="images" aria-hidden="false" role="group" aria-label="Photos of us">
+        <img src="images.jpeg" alt="Photo of my brother and me" />
+        <img src="images1.jpeg" alt="Cute sibling photo" />
+        <img src="images2.jpeg" alt="Brother and sister illustration" />
+      </div>
+    </section>
+  </main>
 </body>
 </html>
